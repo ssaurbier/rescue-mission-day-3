@@ -1,0 +1,35 @@
+<% if flash[:notice] %>
+  <%= flash[:notice] %>
+<% end %>
+
+<h2>Questions:</h2>
+<table>
+  <ul>
+    <% @questions.each do |question| %>
+    <tr>
+       <td><%= link_to question.title, question_path(question) %></td>
+       <td><%= link_to 'Edit', '/questions/' + question.to_param + '/edit' %></td>
+       <td><%= link_to 'Delete', '/questions/' + question.to_param, method: :delete %></td>
+    </tr>
+    <% end %>
+  </ul>
+</table>
+</br>
+
+
+​<%= form_for(@question) do |f| %>
+
+  <div class="field">
+    <%= f.label "New Question" %><br>
+    <%= f.text_area :title %>
+  </div>
+
+  <div class="field">
+    <%= f.label "Details" %><br>
+    <%= f.text_area :description %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

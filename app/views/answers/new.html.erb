@@ -1,0 +1,16 @@
+<%- if @answer.errors.present? -%>
+    <ul>
+      <%- @answer.errors.full_messages.each do |error| -%>
+        <li><%= error %></li>
+      <%- end -%>
+    </ul>
+  </div>
+<%- end -%>
+
+
+<%= form_for [@question, @answer] do |f| %>
+  <%= f.label :description %>
+  <%= f.text_area :description %>
+
+  <%= f.submit "Submit Answer" %>
+<%- end -%>

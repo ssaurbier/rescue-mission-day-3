@@ -1,0 +1,23 @@
+<% if flash[:notice] %>
+  <%= flash[:notice] %>
+<% end %>
+
+<h3><%= @question.title %></h3>
+<ul><li><%= @question.description %></li></ul>
+<%= link_to 'Edit', '/questions/' + @question.to_param + '/edit' %></br>
+<h4>Answers:</h4>
+<p>
+  <% @answers.each do |answer| %>
+  <%= answer.description %>
+  <% end %>
+</p>
+
+
+
+
+<%= form_for [@question, @new_answer] do |f| %>
+  <%= f.label :description %>
+  <%= f.text_area :description %>
+
+  <%= f.submit "Submit Answer" %>
+<%- end -%>

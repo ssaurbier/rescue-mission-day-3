@@ -1,0 +1,19 @@
+<%- if @question.errors.present? -%>
+    <ul>
+      <%- @question.errors.full_messages.each do |error| -%>
+        <li><%= error %></li>
+      <%- end -%>
+    </ul>
+  </div>
+<%- end -%>
+
+
+<%= form_for @question do |f| %>
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+  <p>
+  <%= f.label :description %>
+  <%= f.text_area :description %>
+</p>
+  <%= f.submit "Add Question" %>
+<%- end -%>
